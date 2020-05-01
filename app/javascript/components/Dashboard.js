@@ -1,11 +1,24 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useState, useEffect } from "react"
 
-const Dashboard = () => {
+import UserLogin from './UserLogin';
+
+const Dashboard = ({ loggedInUserId }) => {
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  useEffect(() => {
+    !currentUserId && setCurrentUserId(loggedInUserId);
+  });
+
   return (
-    <Fragment>
-      Dashboard
-    </Fragment>
-  );
+    (!currentUserId ?
+      <UserLogin
+        setCurrentUserId={setCurrentUserId}
+      /> :
+      <Fragment>
+        Logged in user id: {currentUserId}
+      </Fragment>
+    )
+  )
 }
 
 export default Dashboard;
