@@ -12,4 +12,13 @@ class SessionsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    respond_to do |format|
+      format.any(:js, :json) do
+        render json: {}, status: 200
+      end
+    end
+  end
 end

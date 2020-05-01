@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react"
 
 import UserLogin from './UserLogin';
+import UserLogout from './UserLogout';
 
 const Dashboard = ({ loggedInUserId }) => {
   const [currentUserId, setCurrentUserId] = useState(null);
@@ -16,6 +17,9 @@ const Dashboard = ({ loggedInUserId }) => {
       /> :
       <Fragment>
         Logged in user id: {currentUserId}
+        <UserLogout
+          setCurrentUserId={setCurrentUserId}
+        />
       </Fragment>
     )
   )
